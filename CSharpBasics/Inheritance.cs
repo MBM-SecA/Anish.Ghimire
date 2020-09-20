@@ -1,5 +1,11 @@
 
 using System;
+public interface IShapeWithSides
+{
+    public void GetDiagonal();
+
+
+}
 public abstract class Shape
 {
     //abstract members are made when one wnats to force dervied classes to implement own logic
@@ -11,7 +17,7 @@ public abstract class Shape
      Console.WriteLine($"Displaying Result forsome shape");
  }
 }
-public class Square : Shape
+public class Square : Shape , IShapeWithSides
 {
     public Square(double side)
     {
@@ -27,6 +33,7 @@ public class Square : Shape
         Console.WriteLine($"Area:{this.GetArea()} square units");
         Console.WriteLine($"Circumfrence{this.GetCircumference()}:");
     }
+    public double GetDiagonal()=>Math.Sqrt(2*(Side*Side));
     
 }
 public class Rectangle : Shape
@@ -59,5 +66,29 @@ public class Circle : Shape
     public override double GetCircumference() =>2*Math.PI*Radius;
 
     
+
+}
+class A
+{
+
+}
+class B:A{
+
+}
+class C:B
+{
+
+}
+class D:A, IA,IB
+{
+
+}
+
+interface IA
+{
+
+}
+interface IB
+{
 
 }
