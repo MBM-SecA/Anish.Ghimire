@@ -2,10 +2,13 @@ namespace AllAboutClasses
 {
     public class Country
     {
+        //Instance Constructors
         //Default Constructor
        public string Name{get;set;}
        public int Population{get;set;}
        public double Area {get;set;}
+       public static readonly bool IsOnEarth;//for things that doesn't change in all members and readonly is always static
+
 
         public Country()
         {
@@ -23,7 +26,22 @@ namespace AllAboutClasses
             Population=population;
             Area=area;
         }
+        //Static Constructor
+        static Country()
+    {
+        IsOnEarth=true;
+        
+
+
     }
+    //Finalizer
+    ~Country()
+     {
+
+     }
+    }
+    
+    
     public class Demo
     {
         void DoSomething()
