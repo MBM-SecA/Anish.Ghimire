@@ -44,13 +44,18 @@ namespace LINQ
               var result9= numbers.All(x=>x%2==0);
               var result10=numbers.Contains(34);
 
-              var result11 = Enumerable.Range(1,1000);
+              var result11 = Enumerable.Range(1,10);
               var result12 = Enumerable.Repeat("Hello World",10);
 
              foreach (var num in result11)
              {
                Console.WriteLine(num);
              }
+             ComplexType complex= new ComplexType();
+             complex.LearnLINQ();
+             
+
+             
 
 
 
