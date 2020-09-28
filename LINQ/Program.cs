@@ -23,33 +23,42 @@ namespace LINQ
             //{
               //  Console.WriteLine(name);
             //}
+            //Projections
+            // var result5=numbers.Select(x=>x*x);
+            // foreach (var square in result5)
+            // {
+            //   Console.WriteLine(square);
+            // }
+            //Ordering 
+            var result6=from num in numbers
+                        orderby num
+                        select num;
+            foreach (var square in result6)
+             {
+               Console.WriteLine(square);
+             }
+             //Partioning
+             var result7= from numbers.Skip(5).Take(5);
+             //Quantifiers
+             var result8= numbers.Any(x=>x%2==0);
+              var result9= numbers.All(x=>x%2==0);
+              var result10=numbers.Contains(34);
+
+              var result11 = Enumerable.Range(1,1000);
+              var result12 = Enumerable.Repeat("Hello World",10);
+
+             foreach (var num in result11)
+             {
+               Console.WriteLine(num);
+             }
 
 
-            var countries = Country.GetCountries();
-            var asianCountries = from country in countries where country.Continent == "Asia" select country.Name;
-            var EuCountries = from country in countries
-             where country.Continent == "Europe" && country.Population  < 100000
-              select country.Name;
-              Console.WriteLine("List of countries in Europe which have population less than 100k:");
-      //      foreach(var country in asianCountries)
-        //    {
-          //      Console.WriteLine(country);
-            //}
-            foreach(var country in EuCountries)
-            {
-                Console.WriteLine(country);
-            }
-            var asianNonColonized = from country in countries
-                                    where(country.Continent == "Asia") && ( country.IndependenceDay==default)
-                                    select country;
-            Console.WriteLine("List asian countries which are not ever invaded:");
-            foreach (var member in asianNonColonized)
-            {
-                Console.WriteLine(member.Name);
-            }
 
-//List countries in Europe which has population less than 100k.
-//List countries in Asia which are not ever invaded.
+
+
+
+
+            
         }
     }
 }
