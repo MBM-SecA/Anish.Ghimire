@@ -38,7 +38,7 @@ namespace LINQ
                Console.WriteLine(square);
              }
              //Partioning
-             var result7= from numbers.Skip(5).Take(5);
+             var result7= numbers.Skip(5).Take(5);
              //Quantifiers
              var result8= numbers.Any(x=>x%2==0);
               var result9= numbers.All(x=>x%2==0);
