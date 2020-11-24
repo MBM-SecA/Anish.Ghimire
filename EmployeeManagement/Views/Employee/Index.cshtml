@@ -1,9 +1,13 @@
 @model List<Person>
+  @{
+    ViewData ["TitlePhrase"]="All Employees";
+  }
 
-<h1>All Employees..</h1>
+<h1>All Employees(@Model.Count)</h1>
 <table class="table table-striped">
   <thead>
     <tr>
+      <th scope="col">S.No</th>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Address</th>
@@ -12,11 +16,20 @@
     </tr>
   </thead>
   <tbody>
+    @{int i=1;}
     @foreach(var employee in Model)
     {
     
       <tr scope="row">
-      <td>@employee.FirstName</td>
+        <td>
+          @(i++)
+
+          </td>
+
+      <td>
+        <a href="/employee/Details?id=@employee.Id">
+        @employee.FirstName</a>
+      </td>
       <td>@employee.SurName</td>
       <td>@employee.Address</td>
       <td>@employee.Gender</td>
