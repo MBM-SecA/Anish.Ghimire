@@ -1,13 +1,15 @@
 @model Person;
 @{
-    ViewData["Title"] = "Add Employee";
+    ViewData["Title"] = "Update Employee";
     String[] genders={"male","female","others"};
 
 }
 
-<h3>Add New Employee</h3>
+<h3>Update Employee</h3>
 
-<form asp-controller="Employee" asp-action="Add" method="POST">
+<form asp-controller="Employee" asp-action="Edit" method="POST">
+    <input type="hidden" asp-for="Id" />
+
     <div class="form-row">
         <div class="form-group col-md-6">
             <label asp-for="FirstName"></label>
@@ -41,5 +43,5 @@
             <input type="text" class="form-control" placeholder="Address" asp-for="Address">
         </div>
         
-    <button type="submit" class="btn btn-primary">Save Employee</button>
+    <button type="submit" class="btn btn-primary">Update Employee</button>
 </form>
