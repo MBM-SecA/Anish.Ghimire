@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeManagement.Migrations
 {
     [DbContext(typeof(EMSContext))]
-    [Migration("20201206061052_DepartmentModelAdded")]
-    partial class DepartmentModelAdded
+    [Migration("20201208061838_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,12 @@ namespace EmployeeManagement.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("DepartentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("DepartmentId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 
@@ -63,7 +69,16 @@ namespace EmployeeManagement.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentId");
+
                     b.ToTable("People");
+                });
+
+            modelBuilder.Entity("Person", b =>
+                {
+                    b.HasOne("Department", "Department")
+                        .WithMany("People")
+                        .HasForeignKey("DepartmentId");
                 });
 #pragma warning restore 612, 618
         }
