@@ -1,17 +1,18 @@
 @model Person
+
 @{
-  var fn= Model.FirstName;
-    ViewData["TitlePhrase"] = fn;
+  var fn = Model.FirstName;
+  ViewData["TitlePhrase"] = fn;
 }
 
-<h1>Detail of an Employee</h1>
-
+<h1>Employee Detail</h1>
 
 <ul class="list-group">
-  <li class="list-group-item">First Name:@fn</li>
-  <li class="list-group-item">SurName:@Model.SurName</li>
-  <li class="list-group-item">Affress:@Model.Address</li>
-  <li class="list-group-item">Gender: @Model.Gender</li>
-  <li class="list-group-item">Salary: @Model.Salary</li>
+  <li class="list-group-item">First Name : @fn</li>
+  <li class="list-group-item">Surname : @Model.SurName</li>
+  <li class="list-group-item">Address : @Model.Address</li>
+  <li class="list-group-item">Gender : @Model.Gender</li>
+  <li class="list-group-item">Salary : @Model.Salary</li>
 </ul>
-<a href = "/employee/index">Go Back</a>
+<hr>
+<a class="btn btn-outline-primary" href = "/employee/index" role = "button">Go Back</a>
