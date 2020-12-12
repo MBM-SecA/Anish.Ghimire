@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EmployeeManagement.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class DepartmentEmployees : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,8 @@ namespace EmployeeManagement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
-                    Code = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
+                    Code = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false)
                 },
@@ -29,13 +29,12 @@ namespace EmployeeManagement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FirstName = table.Column<string>(nullable: true),
-                    SurName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: false),
+                    Surname = table.Column<string>(nullable: false),
                     Address = table.Column<string>(nullable: true),
-                    Gender = table.Column<char>(nullable: false),
-                    Salary = table.Column<double>(nullable: false),
-                    DepartmentId = table.Column<int>(nullable: true),
-                    DepartentId = table.Column<int>(nullable: false)
+                    Gender = table.Column<char>(nullable: true),
+                    Salary = table.Column<double>(nullable: true),
+                    DepartmentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,7 +44,7 @@ namespace EmployeeManagement.Migrations
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

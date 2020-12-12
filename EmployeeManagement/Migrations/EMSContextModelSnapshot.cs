@@ -22,12 +22,14 @@ namespace EmployeeManagement.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Code")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("StartDate")
@@ -47,22 +49,21 @@ namespace EmployeeManagement.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("DepartentId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("DepartmentId")
+                    b.Property<int>("DepartmentId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<char>("Gender")
+                    b.Property<char?>("Gender")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Salary")
+                    b.Property<double?>("Salary")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("SurName")
+                    b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -76,7 +77,9 @@ namespace EmployeeManagement.Migrations
                 {
                     b.HasOne("Department", "Department")
                         .WithMany("People")
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
