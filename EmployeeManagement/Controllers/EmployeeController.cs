@@ -44,6 +44,8 @@ public class EmployeeController : Controller
     public ActionResult Edit(int id)
     {
         var employee = db.People.Find(id);
+        var departments = db.Departments.ToList();
+        ViewData["DepartmentOptions"] = departments;
         return View(employee);
     }
 
